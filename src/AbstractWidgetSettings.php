@@ -9,7 +9,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Widgets\Widget;
 
 /**
- * Abstract base page for Filament settings pages that persist a named configuration group.
+ * Abstract widget for Filament settings widgets that persist a named configuration group.
  *
  * Loads default values, merges them with persisted data from the database, and provides
  * lifecycle helpers and a save routine that persists form state into the corresponding
