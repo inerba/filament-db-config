@@ -51,7 +51,7 @@ It is framework-friendly and requires no custom Eloquent models in your app.
   - [Configuration](#configuration)
   - [Advanced Usage](#advanced-usage)
     - [Generate a settings page](#generate-a-settings-page)
-    - [Creating a widget](#creating-a-widget)
+    - [Creating a widget 🆕](#creating-a-widget-)
     - [Read \& write values](#read--write-values)
       - [Read a value (helper)](#read-a-value-helper)
       - [Blade directive](#blade-directive)
@@ -266,7 +266,7 @@ public function content(Schema $schema): Schema
 
 </details>
 
-### Creating a widget
+### Creating a widget 🆕
 
 Create a **custom widget** as per the [Filament instructions](https://filamentphp.com/docs/4.x/widgets/overview#custom-widgets)
 
