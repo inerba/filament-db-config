@@ -13,4 +13,5 @@ return [
     'saved_title' => 'Salvato',
     'saved_body' => 'Le impostazioni sono state salvate con successo.',
     'save' => 'Salva',
+    'last_updated' => 'Ultimo aggiornamento',
 ];

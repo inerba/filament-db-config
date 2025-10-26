@@ -13,4 +13,5 @@ return [
     'saved_title' => 'Enregistré',
     'saved_body' => 'Les paramètres ont été enregistrés avec succès.',
     'save' => 'Enregistrer',
+    'last_updated' => 'Dernière mise à jour',
 ];

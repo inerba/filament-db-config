@@ -13,4 +13,5 @@ return [
     'saved_title' => 'Guardado',
     'saved_body' => 'Los ajustes se han guardado correctamente.',
     'save' => 'Guardar',
+    'last_updated' => 'Última actualización',
 ];
