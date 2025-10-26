@@ -121,7 +121,7 @@ class DbConfig
                 ? $timestamp
                 : Carbon::parse($timestamp, $fromTz);
 
-            return $dt->setTimezone($timezone)->format($format);
+            return $dt->setTimezone($timezone)->translatedFormat($format);
         } catch (\Throwable $e) {
             return null;
         }
