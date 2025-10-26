@@ -51,6 +51,7 @@ It is framework-friendly and requires no custom Eloquent models in your app.
   - [Configuration](#configuration)
   - [Advanced Usage](#advanced-usage)
     - [Generate a settings page](#generate-a-settings-page)
+    - [Creating a widget](#creating-a-widget)
     - [Read \& write values](#read--write-values)
       - [Read a value (helper)](#read-a-value-helper)
       - [Blade directive](#blade-directive)
@@ -109,7 +110,7 @@ It is framework-friendly and requires no custom Eloquent models in your app.
 Get up and running in just a few steps:
 
 1. **Generate Your First Settings Page**
-   
+
     ```bash
     php artisan make:db-config Website
     ```
@@ -118,7 +119,6 @@ Get up and running in just a few steps:
 
 > [!NOTE]
 > The generator will automatically add the “Settings” suffix to the page name for consistency (e.g., WebsiteSettings), but you can use any group name you wish.
-
 
 2. **Define Your Fields**
 
@@ -195,6 +195,7 @@ php artisan vendor:publish --tag="db-config-config"
     'ttl' => 60, // Cache for 1 hour
 ],
 ```
+
 </details>
 
 ## Advanced Usage
@@ -206,6 +207,7 @@ DB Config ships with an Artisan generator and an abstract Page class to quickly 
 ```bash
 php artisan make:db-config
 ```
+
 <details><summary><b>Details</b></summary>
 
 Arguments can be omitted: if you don’t provide them, the command will enter interactive mode and prompt you for the group name (name) and, optionally, the panel (panel). You can also pass them on the command line to avoid interactive prompts.
@@ -263,6 +265,57 @@ public function content(Schema $schema): Schema
 ```
 
 </details>
+
+### Creating a widget
+
+Create a **custom widget** as per the [Filament instructions](https://filamentphp.com/docs/4.x/widgets/overview#custom-widgets)
+
+and extend it as shown in the example:
+
+```php
+namespace App\Filament\Resources\Post\Widgets; // depending on your app structure
+
+use Filament\Schemas\Schema;
+use Inerba\DbConfig\AbstractWidgetSettings;
+
+class BlogSettings extends AbstractWidgetSettings
+{
+    /**
+     * Get the name of the setting.
+     *
+     * @return string The name of the setting.
+     */
+    protected function settingName(): string
+    {
+        return 'blog-settings';
+    }
+
+    /**
+     * Provide default values for the settings.
+     *
+     * @return array<string, mixed> The default data for the settings.
+     */
+    public function getDefaultData(): array
+    {
+        return [];
+    }
+
+    /**
+     * Define the form schema for the settings page.
+     *
+     * @param  Schema  $schema  The schema instance.
+     * @return Schema The modified schema with components.
+     */
+    public function form(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                // Form components go here
+            ])
+            ->statePath('data');
+    }
+}
+```
 
 ### Read & write values
 
