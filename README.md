@@ -78,7 +78,7 @@ It is framework-friendly and requires no custom Eloquent models in your app.
 - PHP version supported by your Laravel installation
 - Laravel 12
 - A database engine with JSON support (MySQL 5.7+, MariaDB 10.2.7+, PostgreSQL, SQLite recent versions)
-- Filament 4
+- Filament 4 or Filament 5
 
 ## Installation
 
