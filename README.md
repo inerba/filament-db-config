@@ -549,6 +549,8 @@ The package also uses GitHub Actions to automatically run tests on every push an
 
 This package includes a Boost Agent Skill (`resources/boost/skills/filament-db-config/SKILL.md`) that provides guidance and strict conventions for creating database-backed settings pages with the `db-config` / `filament-db-config` workflows.
 
+To use it, you must have [Laravel Boost](https://laravel.com/ai/boost) installed and run the command `php artisan boost:install`.
+
 ## Versioning
 
 This package follows semantic versioning. Use a version constraint compatible with your Laravel version as shown in the installation section.
