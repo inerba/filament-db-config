@@ -325,7 +325,7 @@ class DbConfigCommand extends Command
 
     protected function askToStar(): void
     {
-        if ($this->option('no-interaction')) {
+        if (! $this->input->isInteractive()) {
             return;
         }
 
