@@ -31,10 +31,10 @@
 DB Config is a Filament plugin that provides a simple, database-backed key/value store for **application settings** and **editable content**.  
 It’s ideal both for storing configuration (like site name, contact info, labels) and for managing page sections (homepage hero, landing blocks, about text, etc.) without the need for a full CMS.
 
--   🔑 Store application settings in a simple key/value table
--   📝 Manage editable content (homepages, landing pages, about sections)
--   ⚡ Use any Filament form fields or layouts — including third-party ones
--   🗄️ Transparent caching, no extra boilerplate, zero external deps
+- 🔑 Store application settings in a simple key/value table
+- 📝 Manage editable content (homepages, landing pages, about sections)
+- ⚡ Use any Filament form fields or layouts — including third-party ones
+- 🗄️ Transparent caching, no extra boilerplate, zero external deps
 
 It provides a clean set of simple helpers for reading and writing values, with transparent caching under the hood, and persists data as JSON in a dedicated table.  
 It is framework-friendly and requires no custom Eloquent models in your app.
@@ -44,41 +44,42 @@ It is framework-friendly and requires no custom Eloquent models in your app.
 <div class="filament-hidden">
 <b>Table of Contents</b>
 
--   [DB Config – Lightweight settings \& content manager for Filament](#db-config--lightweight-settings--content-manager-for-filament)
-    -   [Requirements](#requirements)
-    -   [Installation](#installation)
-    -   [🚀 Getting Started](#-getting-started)
-    -   [Configuration](#configuration)
-    -   [Advanced Usage](#advanced-usage)
-        -   [Generate a settings page](#generate-a-settings-page)
-        -   [Creating a widget 🆕](#creating-a-widget-)
-        -   [Read \& write values](#read--write-values)
-            -   [Read a value (helper)](#read-a-value-helper)
-            -   [Blade directive](#blade-directive)
-            -   [Read a value (class)](#read-a-value-class)
-            -   [Write a value](#write-a-value)
-            -   [Read an entire group as associative array](#read-an-entire-group-as-associative-array)
-            -   [Facade (optional)](#facade-optional)
-        -   [Set Default Values](#set-default-values)
-        -   [Working with nested values](#working-with-nested-values)
-    -   [How it works](#how-it-works)
-        -   [Database](#database)
-        -   [Caching behavior](#caching-behavior)
-        -   [Return values and defaults](#return-values-and-defaults)
-    -   [Why use DB Config when Spatie Settings already exists?](#why-use-db-config-when-spatie-settings-already-exists)
-    -   [Security considerations](#security-considerations)
-    -   [Testing](#testing)
-    -   [Versioning](#versioning)
-    -   [License](#license)
+- [DB Config – Lightweight settings \& content manager for Filament](#db-config--lightweight-settings--content-manager-for-filament)
+    - [Requirements](#requirements)
+    - [Installation](#installation)
+    - [🚀 Getting Started](#-getting-started)
+    - [Configuration](#configuration)
+    - [Advanced Usage](#advanced-usage)
+        - [Generate a settings page](#generate-a-settings-page)
+        - [Creating a widget 🆕](#creating-a-widget-)
+        - [Read \& write values](#read--write-values)
+            - [Read a value (helper)](#read-a-value-helper)
+            - [Blade directive](#blade-directive)
+            - [Read a value (class)](#read-a-value-class)
+            - [Write a value](#write-a-value)
+            - [Read an entire group as associative array](#read-an-entire-group-as-associative-array)
+            - [Facade (optional)](#facade-optional)
+        - [Set Default Values](#set-default-values)
+        - [Working with nested values](#working-with-nested-values)
+    - [How it works](#how-it-works)
+        - [Database](#database)
+        - [Caching behavior](#caching-behavior)
+        - [Return values and defaults](#return-values-and-defaults)
+    - [Why use DB Config when Spatie Settings already exists?](#why-use-db-config-when-spatie-settings-already-exists)
+    - [Security considerations](#security-considerations)
+    - [Testing](#testing)
+    - [Plugin Skill: filament-db-config](#plugin-skill-filament-db-config)
+    - [Versioning](#versioning)
+    - [License](#license)
 
 </div>
 
 ## Requirements
 
--   PHP version supported by your Laravel installation
--   Laravel 12
--   A database engine with JSON support (MySQL 5.7+, MariaDB 10.2.7+, PostgreSQL, SQLite recent versions)
--   Filament 4 or Filament 5
+- PHP version supported by your Laravel installation
+- Laravel 12
+- A database engine with JSON support (MySQL 5.7+, MariaDB 10.2.7+, PostgreSQL, SQLite recent versions)
+- Filament 4 or Filament 5
 
 ## Installation
 
@@ -147,7 +148,6 @@ Get up and running in just a few steps:
 4. **Use Your Settings Anywhere**
 
     Retrieve your configuration values easily:
-
     - In PHP:
 
         ```php
@@ -186,9 +186,9 @@ php artisan vendor:publish --tag="db-config-config"
 
 **Cache Behavior**: The package uses caching to minimize database queries. You can fine-tune the cache settings.
 
--   **prefix**: All cache keys generated by the package will use this prefix. Changing this can prevent collisions with other cache keys in your application.
+- **prefix**: All cache keys generated by the package will use this prefix. Changing this can prevent collisions with other cache keys in your application.
 
--   **ttl**: Defines the cache lifetime in minutes. By default, it's null, which means settings are cached forever. You can specify a number of minutes to have the cache expire periodically.
+- **ttl**: Defines the cache lifetime in minutes. By default, it's null, which means settings are cached forever. You can specify a number of minutes to have the cache expire periodically.
 
 ```PHP
 'cache' => [
@@ -215,8 +215,8 @@ Arguments can be omitted: if you don’t provide them, the command will enter in
 
 Parameters:
 
--   `name`: the settings group name (e.g. `website`). It is used to generate the view name and the class name (singular, capitalized).
--   `panel` (optional): the Filament panel to create the page in (e.g. `Admin`). If omitted the default panel is used.
+- `name`: the settings group name (e.g. `website`). It is used to generate the view name and the class name (singular, capitalized).
+- `panel` (optional): the Filament panel to create the page in (e.g. `Admin`). If omitted the default panel is used.
 
 Examples:
 
@@ -227,26 +227,26 @@ php artisan make:db-config website admin      # specific panel (e.g. Admin)
 
 What is generated:
 
--   A Page class at `app/Filament/{Panel}/Pages/{Name}Settings.php` (the class name is the singular form of `{name}` + `Settings`, e.g. `WebsiteSettings.php`).
--   A Blade view at `resources/views/filament/config-pages/{slug-name}-settings.blade.php` (the view name is a slugified version of the `name` with a `-settings` suffix).
+- A Page class at `app/Filament/{Panel}/Pages/{Name}Settings.php` (the class name is the singular form of `{name}` + `Settings`, e.g. `WebsiteSettings.php`).
+- A Blade view at `resources/views/filament/config-pages/{slug-name}-settings.blade.php` (the view name is a slugified version of the `name` with a `-settings` suffix).
 
 Behavior:
 
--   The command does not overwrite existing files: if the class or the view already exist it will warn and leave the files intact.
--   Names are normalized: the class uses the singular form of the provided name, the view is slugified (spaces and special characters are converted).
+- The command does not overwrite existing files: if the class or the view already exist it will warn and leave the files intact.
+- Names are normalized: the class uses the singular form of the provided name, the view is slugified (spaces and special characters are converted).
 
 Note: the generated class extends `Inerba\DbConfig\AbstractPageSettings` and the view is placed under `resources/views/filament/config-pages/`.
 
 Page lifecycle and saving:
 
--   On `mount()`, the page loads all settings for the given group (defined by `settingName()`) via `DbConfig::getGroup()` and fills the page content state.
--   A built-in header action “Save” persists the current state by calling `DbConfig::set("{group}.{key}", $value)` for each top-level key present in the page content.
+- On `mount()`, the page loads all settings for the given group (defined by `settingName()`) via `DbConfig::getGroup()` and fills the page content state.
+- A built-in header action “Save” persists the current state by calling `DbConfig::set("{group}.{key}", $value)` for each top-level key present in the page content.
 
 Defining the page content:
 
--   Implement `protected function settingName(): string` to define the group name (e.g. `website`).
--   Implement `public function content(Schema $schema): Schema` and return your content schema.
--   Set `->statePath('data')` so the page state is bound to the `$data` property and saved correctly.
+- Implement `protected function settingName(): string` to define the group name (e.g. `website`).
+- Implement `public function content(Schema $schema): Schema` and return your content schema.
+- Set `->statePath('data')` so the page state is bound to the `$data` property and saved correctly.
 
 Example page content (Filament schema):
 
@@ -342,9 +342,9 @@ safe_db_config('website.site_name', 'Default Name');
 
 This is particularly useful in:
 
--   Service providers or middleware that run before the database is fully initialized
--   Fallback scenarios where you want graceful degradation
--   Development or CI environments where the database might not always be available
+- Service providers or middleware that run before the database is fully initialized
+- Fallback scenarios where you want graceful degradation
+- Development or CI environments where the database might not always be available
 
 > [!TIP]
 > Use `safe_db_config()` in critical paths where a configuration failure should not interrupt the application flow.
@@ -432,9 +432,9 @@ It's important to note that these default values are not persistent until the us
 
 DB Config uses a `group.setting` format for keys, with optional nested sub-keys resolved from JSON.
 
--   The first segment is the **group**
--   The second is the **top-level key**
--   Any remaining segments are treated as nested paths inside the JSON value
+- The first segment is the **group**
+- The second is the **top-level key**
+- Any remaining segments are treated as nested paths inside the JSON value
 
 Example:
 
@@ -458,20 +458,20 @@ Settings are organized by a two-part key: `group.setting`, with optional nested 
 
 Under the hood:
 
--   **Database Storage:** Settings are stored in a database table (by default `db_config`), with one row per `(group, key)`. The actual settings are stored as a JSON payload in the `settings` column.
--   **Intelligent Caching:** Reads are cached to ensure high performance. By default, they are cached forever, but you can configure a specific TTL (Time To Live) in the config file.
--   **Configurable Cache Keys:** The cache key is generated using a configurable prefix (`db-config` by default) followed by the group and setting (e.g., `db-config.website.site_name`).
--   **Automatic Cache Invalidation:** Writes automatically clear the corresponding cache entry, ensuring that data always stays fresh.
+- **Database Storage:** Settings are stored in a database table (by default `db_config`), with one row per `(group, key)`. The actual settings are stored as a JSON payload in the `settings` column.
+- **Intelligent Caching:** Reads are cached to ensure high performance. By default, they are cached forever, but you can configure a specific TTL (Time To Live) in the config file.
+- **Configurable Cache Keys:** The cache key is generated using a configurable prefix (`db-config` by default) followed by the group and setting (e.g., `db-config.website.site_name`).
+- **Automatic Cache Invalidation:** Writes automatically clear the corresponding cache entry, ensuring that data always stays fresh.
 
 ### Database
 
 The `db_config` table contains:
 
--   `id` (bigint, primary key)
--   `group` (string)
--   `key` (string)
--   `settings` (json, nullable)
--   `created_at`, `updated_at` (timestamps)
+- `id` (bigint, primary key)
+- `group` (string)
+- `key` (string)
+- `settings` (json, nullable)
+- `created_at`, `updated_at` (timestamps)
 
 There is a unique index on (`group`, `key`). Timestamps are present but not used by the package logic and may remain null depending on your database defaults.
 
@@ -481,16 +481,16 @@ There is a unique index on (`group`, `key`). Timestamps are present but not used
 
 To minimize database traffic, DB Config comes with a powerful caching layer. Here’s how it works:
 
--   **Default Behavior:** By default, settings are cached **forever**. The first time a setting is read, it's fetched from the database and stored in the cache. All subsequent reads will hit the cache directly, making them incredibly fast.
--   **Automatic Cache Invalidation:** When you use `DbConfig::set()` or the "Save" action on a settings page, the cache for the affected `(group, setting)` pair is automatically cleared. This ensures that the next read will fetch the fresh value from the database.
--   **Configurable TTL:** You can change the default behavior by setting a `ttl` (Time To Live) in minutes in the `config/db-config.php` file. If a TTL is set, the package will use a temporary cache that expires after the specified duration.
--   **Manual Cache Clearing:** When debugging, you can clear the entire framework cache using `php artisan cache:clear` to reset all cached settings.
+- **Default Behavior:** By default, settings are cached **forever**. The first time a setting is read, it's fetched from the database and stored in the cache. All subsequent reads will hit the cache directly, making them incredibly fast.
+- **Automatic Cache Invalidation:** When you use `DbConfig::set()` or the "Save" action on a settings page, the cache for the affected `(group, setting)` pair is automatically cleared. This ensures that the next read will fetch the fresh value from the database.
+- **Configurable TTL:** You can change the default behavior by setting a `ttl` (Time To Live) in minutes in the `config/db-config.php` file. If a TTL is set, the package will use a temporary cache that expires after the specified duration.
+- **Manual Cache Clearing:** When debugging, you can clear the entire framework cache using `php artisan cache:clear` to reset all cached settings.
 
 ### Return values and defaults
 
--   If a value or nested path does not exist, the provided default is returned.
--   If the stored JSON value is `null`, the default is returned.
--   `getGroup()` returns an associative array of all settings for the group, or an empty array if none exist.
+- If a value or nested path does not exist, the provided default is returned.
+- If the stored JSON value is `null`, the default is returned.
+- `getGroup()` returns an associative array of all settings for the group, or an empty array if none exist.
 
 ## Why use DB Config when Spatie Settings already exists?
 
@@ -514,9 +514,9 @@ The table below highlights the key differences so you can choose the right tool 
 
 Choose **DB Config** if you want:
 
--   A **lightweight key/value system** for both settings and content.
--   Minimal setup, no boilerplate code.
--   Flexibility to manage simple settings and even **page content** directly in Filament.
+- A **lightweight key/value system** for both settings and content.
+- Minimal setup, no boilerplate code.
+- Flexibility to manage simple settings and even **page content** directly in Filament.
 
 Choose **Spatie Laravel Settings Plugin** if you need **strict typing, validation, and DTOs** as part of your domain logic.
 
@@ -544,6 +544,10 @@ Then, run the test suite from the root of the project:
 ```
 
 The package also uses GitHub Actions to automatically run tests on every push and pull request, ensuring that the code remains stable and reliable.
+
+## Plugin Skill: filament-db-config
+
+This package includes a Boost Agent Skill (`resources/boost/skills/filament-db-config/SKILL.md`) that provides guidance and strict conventions for creating database-backed settings pages with the `db-config` / `filament-db-config` workflows.
 
 ## Versioning
 
