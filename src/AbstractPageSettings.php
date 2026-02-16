@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Inerba\DbConfig;
 
-use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 
@@ -29,7 +28,7 @@ abstract class AbstractPageSettings extends Page
      */
     public ?array $data = [];
 
-    protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-wrench-screwdriver';
+    protected static ?string $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
     /**
      * Returns the navigation group label used by the Filament UI to group this page.

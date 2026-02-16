@@ -3,14 +3,12 @@
 namespace Inerba\DbConfig\Commands;
 
 use Filament\Facades\Filament;
-use Filament\Support\Commands\Concerns\CanOpenUrlInBrowser;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Pluralizer;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Attribute\AsCommand;
 
-use function Laravel\Prompts\confirm;
 use function Laravel\Prompts\suggest;
 use function Laravel\Prompts\text;
 
@@ -24,8 +22,6 @@ use function Laravel\Prompts\text;
  */
 class DbConfigCommand extends Command
 {
-    use CanOpenUrlInBrowser;
-
     public $signature = 'make:db-config {name?} {panel?}';
 
     public $description = 'Create a new Filament settings Page class and its Blade view. '
@@ -102,7 +98,6 @@ class DbConfigCommand extends Command
             $this->warn("File : {$path} already exits");
         }
 
-        $this->askToStar();
     }
 
     /**
@@ -321,21 +316,5 @@ class DbConfigCommand extends Command
         }
 
         return $path;
-    }
-
-    protected function askToStar(): void
-    {
-        if (! $this->input->isInteractive()) {
-            return;
-        }
-
-        if (! confirm(
-            label: '🚀 All set! If this tool saved you time, why not give it a ⭐ on GitHub? Your support helps keep it alive!',
-            default: true,
-        )) {
-            return;
-        }
-
-        $this->openUrlInBrowser('https://github.com/inerba/filament-db-config');
     }
 }
