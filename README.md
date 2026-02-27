@@ -215,7 +215,7 @@ Arguments can be omitted: if you don’t provide them, the command will enter in
 
 Parameters:
 
-- `name`: the settings group name (e.g. `website`). It is used to generate the view name and the class name (singular, capitalized).
+- `name`: the settings group name (e.g. `website`). It is used to generate the class name (singular, capitalized).
 - `panel` (optional): the Filament panel to create the page in (e.g. `Admin`). If omitted the default panel is used.
 
 Examples:
@@ -228,14 +228,13 @@ php artisan make:db-config website admin      # specific panel (e.g. Admin)
 What is generated:
 
 - A Page class at `app/Filament/{Panel}/Pages/{Name}Settings.php` (the class name is the singular form of `{name}` + `Settings`, e.g. `WebsiteSettings.php`).
-- A Blade view at `resources/views/filament/config-pages/{slug-name}-settings.blade.php` (the view name is a slugified version of the `name` with a `-settings` suffix).
 
 Behavior:
 
-- The command does not overwrite existing files: if the class or the view already exist it will warn and leave the files intact.
-- Names are normalized: the class uses the singular form of the provided name, the view is slugified (spaces and special characters are converted).
+- The command does not overwrite existing files: if the class already exists it will warn and leave the file intact.
+- Names are normalized: the class uses the singular form of the provided name.
 
-Note: the generated class extends `Inerba\DbConfig\AbstractPageSettings` and the view is placed under `resources/views/filament/config-pages/`.
+Note: the generated class extends `Inerba\DbConfig\AbstractPageSettings`.
 
 Page lifecycle and saving:
 
