@@ -29,6 +29,8 @@ abstract class AbstractPageSettings extends Page
      */
     public ?array $data = [];
 
+    protected string $view = 'db-config::filament.pages.default';
+
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-wrench-screwdriver';
 
     /**
