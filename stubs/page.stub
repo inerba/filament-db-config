@@ -22,8 +22,6 @@ class $CLASS_NAME$Settings extends AbstractPageSettings
 
     // protected static ?string $slug = '$SETTING_NAME$-settings'; // Uncomment if you want to set a custom slug
 
-    protected string $view = 'filament.pages.$SETTING_NAME$-settings';
-
     protected function settingName(): string
     {
         return '$SETTING_NAME$';
