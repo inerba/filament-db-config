@@ -28,10 +28,9 @@ class DbConfigCommand extends Command
 
     public $signature = 'make:db-config {name?} {panel?}';
 
-    public $description = 'Create a new Filament settings Page class and its Blade view. '
+    public $description = 'Create a new Filament settings Page class'
         . 'Usage: php artisan make:db-config [name?] [panel?] — generates '
-        . 'app/Filament/{Panel}/Pages/{Name}Settings.php and '
-        . 'resources/views/filament/config-pages/{name}.blade.php. '
+        . 'app/Filament/{Panel}/Pages/{Name}Settings.php'
         . 'If arguments are not provided, you will be prompted interactively. '
         . 'Existing files will not be overwritten.';
 
@@ -77,17 +76,11 @@ class DbConfigCommand extends Command
      */
     public function handle(): void
     {
-        // Collect input interactively if not provided
-        $name = $this->getNameArgument();
-        $panel = $this->getPanelArgument();
-
         $path = $this->getSourceFilePath();
 
         $this->makeDirectory(dirname($path));
 
         $contents = $this->getSourceFile();
-
-        $this->createViewFromStub('filament.pages.' . Str::of($name)->headline()->lower()->slug() . '-settings');
 
         if ($contents === false) {
             $this->warn("Could not build source file contents for {$path}");
@@ -186,47 +179,6 @@ class DbConfigCommand extends Command
         $panels = Filament::getPanels();
 
         return array_keys($panels);
-    }
-
-    /**
-     * Create a new view file from the stub.
-     *
-     * @param  string  $viewName  The name of the view.
-     */
-    public function createViewFromStub(string $viewName): void
-    {
-        // Define the path to the view stub.
-        $viewStubPath = __DIR__ . '/../../stubs/view.stub';
-
-        // Define the path to the new view file.
-        $newViewPath = \resource_path('views/' . str_replace('.', '/', $viewName) . '.blade.php');
-
-        if ($this->files->exists($newViewPath)) {
-            $this->warn("File : {$newViewPath} already exists");
-
-            return;
-        }
-
-        // Read the contents of the view stub.
-        $viewStubContents = file_get_contents($viewStubPath);
-
-        if ($viewStubContents === false) {
-            $this->warn("Unable to read view stub at {$viewStubPath}");
-
-            return;
-        }
-
-        // Replace any variables in the stub contents.
-        // In this example, we're replacing a variable named 'VIEW_NAME'.
-        $viewContents = str_replace('$VIEW_NAME$', $viewName, $viewStubContents);
-
-        // Create the directory for the new view file, if it doesn't already exist.
-        $this->makeDirectory(dirname($newViewPath));
-
-        // Write the view contents to the new view file using the Filesystem API.
-        $this->files->put($newViewPath, $viewContents);
-
-        $this->info("View file : {$newViewPath} created");
     }
 
     /**
