@@ -26,3 +26,5 @@
 /tailwind.config.js     export-ignore
 /testbench.yaml         export-ignore
 /UPGRADING.md           export-ignore
+/resources/boost        export-ignore
+/SECURITY.md            export-ignore
