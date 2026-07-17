@@ -13,6 +13,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/inerba/filament-db-config/code-style.yml?branch=main&label=Code%20style&style=flat-square)](https://packagist.org/packages/inerba/filament-db-config)
 [![Total Downloads](https://img.shields.io/packagist/dt/inerba/filament-db-config)](https://packagist.org/packages/inerba/filament-db-config)
 [![License](https://img.shields.io/packagist/l/inerba/filament-db-config)](https://packagist.org/packages/inerba/filament-db-config)
+[![Plumb score](https://plumbphp.dev/badges/inerba/filament-db-config/composite.svg)](https://plumbphp.dev/inerba/filament-db-config)
 
 </div>
 
