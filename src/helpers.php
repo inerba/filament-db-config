@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+use Inerba\DbConfig\DbConfig;
 
 if (! function_exists('db_config')) {
     /**
@@ -12,7 +13,7 @@ if (! function_exists('db_config')) {
      */
     function db_config(string $key, mixed $default = null): mixed
     {
-        return \Inerba\DbConfig\DbConfig::get($key, $default);
+        return DbConfig::get($key, $default);
     }
 
     /**
@@ -33,8 +34,8 @@ if (! function_exists('db_config')) {
     function safe_db_config(string $key, mixed $default = null): mixed
     {
         try {
-            return \Inerba\DbConfig\DbConfig::get($key, $default);
-        } catch (\Exception $e) {
+            return DbConfig::get($key, $default);
+        } catch (Exception $e) {
             return $default;
         }
     }

@@ -64,7 +64,7 @@ trait DbConfigTrait
         }
 
         if (! is_object($this->form) || ! method_exists($this->form, 'getState')) {
-            throw new \RuntimeException('Expected $this->form to be an object exposing getState().');
+            throw new RuntimeException('Expected $this->form to be an object exposing getState().');
         }
 
         /** @var array<string,mixed> $state */

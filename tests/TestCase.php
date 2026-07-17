@@ -17,10 +17,13 @@ use Filament\Panel;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
+use Illuminate\Foundation\Application;
 use Inerba\DbConfig\DbConfigServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider; // Your package's provider
+use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
+
+ // Your package's provider
 
 class TestCase extends Orchestra
 {
@@ -51,7 +54,7 @@ class TestCase extends Orchestra
     /**
      * Definisci l'ambiente di test.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  Application  $app
      */
     public function getEnvironmentSetUp($app)
     {
